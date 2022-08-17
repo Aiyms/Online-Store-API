@@ -1,0 +1,255 @@
+{
+	"info": {
+		"_postman_id": "93b87aad-125a-44b7-8096-5f459109acc3",
+		"name": "Online Shop",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Вытащить список всех товаров",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:7098/api/GetAllGoods",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "7098",
+					"path": [
+						"api",
+						"GetAllGoods"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Добавить товар в корзину",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:7098/api/AddProductToBasket?GoodId=D315E38D-24C4-48F0-A623-E5335C66B8DE",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "7098",
+					"path": [
+						"api",
+						"AddProductToBasket"
+					],
+					"query": [
+						{
+							"key": "GoodId",
+							"value": "D315E38D-24C4-48F0-A623-E5335C66B8DE"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Изменение кол-ва определенного товара в корзине(добавление и удаление)",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:7098/api/ChangeProductQuantityInBasket?GoodId=D315E38D-24C4-48F0-A623-E5335C66B8DE&Quantity=1&BasketId=5D7B9113-D119-4CE4-9AF5-6134038A1D26",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "7098",
+					"path": [
+						"api",
+						"ChangeProductQuantityInBasket"
+					],
+					"query": [
+						{
+							"key": "GoodId",
+							"value": "D315E38D-24C4-48F0-A623-E5335C66B8DE"
+						},
+						{
+							"key": "Quantity",
+							"value": "1"
+						},
+						{
+							"key": "BasketId",
+							"value": "5D7B9113-D119-4CE4-9AF5-6134038A1D26"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Cписок добавленных товаров",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:7098/api/GetBasket?BasketId=5D7B9113-D119-4CE4-9AF5-6134038A1D26",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "7098",
+					"path": [
+						"api",
+						"GetBasket"
+					],
+					"query": [
+						{
+							"key": "BasketId",
+							"value": "5D7B9113-D119-4CE4-9AF5-6134038A1D26"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Cоздание заказа",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:7098/api/CreateOrder?BasketId=5D7B9113-D119-4CE4-9AF5-6134038A1D26",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "7098",
+					"path": [
+						"api",
+						"CreateOrder"
+					],
+					"query": [
+						{
+							"key": "BasketId",
+							"value": "5D7B9113-D119-4CE4-9AF5-6134038A1D26"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Добавить номер карты и адрес. Изменить статус на Paid",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"OrderId\": \"F567B9E2-AB24-4472-9D36-91BF51A5BF1E\",\r\n    \"BasketId\": \"CA133C8B-8AEF-474A-991B-1D6772EA3996\",\r\n    \"Address\": \"Cуюнбая 2к1\",\r\n    \"CardNumber\": \"841515266561\"\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:7098/api/PostOrderPayment",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "7098",
+					"path": [
+						"api",
+						"PostOrderPayment"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Изменение статуса заказа на выполнен",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:7098/api/ChangeOrderStatus?OrderId=F567B9E2-AB24-4472-9D36-91BF51A5BF1E&StatusCode=3",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "7098",
+					"path": [
+						"api",
+						"ChangeOrderStatus"
+					],
+					"query": [
+						{
+							"key": "OrderId",
+							"value": "F567B9E2-AB24-4472-9D36-91BF51A5BF1E"
+						},
+						{
+							"key": "StatusCode",
+							"value": "3"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Cписок всех заказов",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:7098/api/GetOrders",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "7098",
+					"path": [
+						"api",
+						"GetOrders"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Детали заказа",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:7098/api/GetOrderDetails?OrderId=F567B9E2-AB24-4472-9D36-91BF51A5BF1E",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "7098",
+					"path": [
+						"api",
+						"GetOrderDetails"
+					],
+					"query": [
+						{
+							"key": "OrderId",
+							"value": "F567B9E2-AB24-4472-9D36-91BF51A5BF1E"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
